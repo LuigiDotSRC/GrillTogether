@@ -14,10 +14,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    // TODO: protect this endpoint
     public List<User> getUsers() {
         return userRepository.findAll();
     }
 
+    // TODO: must hash the password before storing it
     public User addUser(User user) {
         return userRepository.save(user);
     }
