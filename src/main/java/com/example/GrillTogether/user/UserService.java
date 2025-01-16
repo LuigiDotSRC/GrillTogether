@@ -19,6 +19,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     // TODO: must hash the password before storing it
     public User addUser(User user) {
         return userRepository.save(user);
