@@ -1,4 +1,4 @@
-package com.example.GrillTogether.configurations;
+package com.example.GrillTogether.auth;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
