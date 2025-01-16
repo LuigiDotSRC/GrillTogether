@@ -23,7 +23,6 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    // TODO: must hash the password before storing it
     public User addUser(User user) {
         return userRepository.save(user);
     }

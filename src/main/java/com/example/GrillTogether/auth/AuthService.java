@@ -4,6 +4,7 @@ import com.example.GrillTogether.user.User;
 import com.example.GrillTogether.user.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,7 @@ public class AuthService {
         this.userService = userService;
     }
 
+    //TODO: email verification, OAuth
     public String registerUser(User user) {
         if (userService.findByEmail(user.getEmail()) != null) {
             throw new IllegalArgumentException("Email is already registered");
@@ -29,5 +31,14 @@ public class AuthService {
         userService.addUser(userDBInstance);
 
         return jwtTokenProvider.generateToken(userDBInstance);
+    }
+
+    public String loginUser(String email, String password) {
+        User user = userService.findByEmail(email);
+        if (user == null || !BCrypt.checkpw(password, user.getPassword())) {
+            throw new BadCredentialsException("Invalid Credentials");
+        }
+
+        return jwtTokenProvider.generateToken(user);
     }
 }

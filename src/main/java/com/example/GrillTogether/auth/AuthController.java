@@ -22,4 +22,9 @@ public class AuthController {
     public String register(@RequestBody User user) {
         return authService.registerUser(user);
     }
+
+    @PostMapping(path = "/login")
+    public String login(@RequestBody LoginRequest loginRequest) {
+        return authService.loginUser(loginRequest.getEmail(), loginRequest.getPassword());
+    }
 }
