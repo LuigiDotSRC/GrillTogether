@@ -14,7 +14,6 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // TODO: protect this endpoint
     public List<User> getUsers() {
         return userRepository.findAll();
     }

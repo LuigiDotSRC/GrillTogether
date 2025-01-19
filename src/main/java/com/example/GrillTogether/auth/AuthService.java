@@ -20,7 +20,7 @@ public class AuthService {
     }
 
     //TODO: email verification, OAuth
-    public String registerUser(User user) {
+    public String registerUser(User user) throws IllegalArgumentException {
         if (userService.findByEmail(user.getEmail()) != null) {
             throw new IllegalArgumentException("Email is already registered");
         }
@@ -33,7 +33,7 @@ public class AuthService {
         return jwtTokenProvider.generateToken(userDBInstance);
     }
 
-    public String loginUser(String email, String password) {
+    public String loginUser(String email, String password) throws BadCredentialsException {
         User user = userService.findByEmail(email);
         if (user == null || !BCrypt.checkpw(password, user.getPassword())) {
             throw new BadCredentialsException("Invalid Credentials");

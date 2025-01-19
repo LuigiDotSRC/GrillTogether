@@ -1,6 +1,8 @@
 package com.example.GrillTogether.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/v1/user")
 public class UserController {
+    //TODO: only admins should be allowed to use this
 
     private final UserService userService;
 
@@ -17,12 +20,12 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getUser() {
-        return userService.getUsers();
+    public ResponseEntity<List<User>> getUser() {
+        return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
 
     @PostMapping
-    public User addUser(@RequestBody User user) {
-        return userService.addUser(user);
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 }
