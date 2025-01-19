@@ -24,4 +24,8 @@ public class JwtTokenProvider {
                 .withClaim("iat", Instant.now())
                 .sign(Algorithm.HMAC256(jwtKey));
     }
+
+    public void setJwtKey(String jwtKey) {
+        this.jwtKey = jwtKey;
+    }
 }
