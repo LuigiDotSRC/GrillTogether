@@ -32,7 +32,14 @@ experience.
    - Push notifications for new meetups, reminders for registered events, and updates from the host
 
 ### User Stories
-TODO
+1. As a user, I want to create events so I can meet new people and cook meals
+2. As a user, I want to search for events
+3. As a user, I want to RSVP to events so I can secure my spot in a meetup 
+4. As a user, I want to be able to customize my public profile
+5. As a user, I want to rate and review the meetups I attend so others can learn from my experience
+6. As a user, I want to be able to see a list of all the meetups I have attended
+7. As a host, I want to provide an ingredient list for my meetup so other attendees can contribute or bring what's needed
+8. As a host, I want to be able to approve/deny attendee requests to ensure the group size stays manageable
 
 ### Non Functional Requirements
 TODO
