@@ -3,12 +3,14 @@ package com.example.GrillTogether.auth;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.GrillTogether.user.User;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.Map;
 
+@Setter
 @Component
 public class JwtTokenProvider {
 
@@ -25,7 +27,4 @@ public class JwtTokenProvider {
                 .sign(Algorithm.HMAC256(jwtKey));
     }
 
-    public void setJwtKey(String jwtKey) {
-        this.jwtKey = jwtKey;
-    }
 }
